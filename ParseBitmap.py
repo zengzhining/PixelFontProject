@@ -138,6 +138,7 @@ def changePeFile( fontName, fileName ) :
     peFile = open( "convert.pe", mode='w' )
     peFile.write(final)
     peFile.close()
+    output = os.popen( "FontForge -script convert.pe test.sfd" )
     
 
 # lastTime = time.time()
@@ -148,14 +149,14 @@ def changePeFile( fontName, fileName ) :
 #         print("------")
 
 ## read config.txt
-# _config = open("config.txt", mode='r')
-# for line in _config.readlines():
-#     line = line.replace('\n',"")
-#     tbl = line.split(',')
-#     changePeFile( tbl[0], tbl[1] )
-#     time.sleep(1)
-#     print line
+_config = open("config.txt", mode='r')
+for line in _config.readlines():
+    line = line.replace('\n',"")
+    tbl = line.split(',')
+    changePeFile( tbl[0], tbl[1] )
+    time.sleep(1)
+    print line
 
-changePeFile( "好", "0.svg" )
-output = os.popen( "./convert.pe test.sfd" )
+#changePeFile( "好", "0.svg" )
+#output = os.popen( "FontForge -script convert.pe test.sfd" )
 

@@ -1,6 +1,6 @@
-#! E:\SoftWare\FontForgeBuilds\bin\fontforge
-fontName = "好" 
-svg_file = "0.svg" 
+#! /Applications/FontForge.app/Contents/MacOS/FontForge
+fontName = "四" 
+svg_file = "5.svg" 
 
 Open($1)
 Print("Start to load font")
