@@ -1,0 +1,18 @@
+#! E:\SoftWare\FontForgeBuilds\bin\fontforge
+fontName = "好" 
+svg_file = "0.svg" 
+
+Open($1)
+Print("Start to load font")
+Print("svg_file: " + svg_file)
+list = Ucs4(fontName)
+num = list[0]
+Select(num)
+Cut()
+Import(svg_file)
+
+Save()
+#Generate($1:r + ".ttf")
+	
+
+
