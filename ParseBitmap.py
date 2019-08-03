@@ -90,61 +90,69 @@ def getChinese( content, index ):
 # print '参数个数为:', len(sys.argv), '个参数。'
 # print '参数列表:', str(sys.argv)
 # print sys.argv[1]
-_file = open("word.txt", mode='r')
-_content = _file.read()
-print _content
-index = 1
-num = len(_content)/3
+# _file = open("word.txt", mode='r')
+# _content = _file.read()
+# print _content
+# index = 1
+# num = len(_content)/3
 
-_log = open("config.txt", mode='w')
+# _log = open("config.txt", mode='w')
 
-for i in range( num ):
-    text = getChinese( _content, i )
-    print "start to process %s" % ( text )
-    # text = sys.argv[1]
-    name = "%d.png" % ( i )
-    svgName = "%d.svg" % (i)
-    _list = getFontList( text )
-    drawPicture( _list, name )
-    resizePicture( name )
-    print "start to change to svg"
-    command = "png2svg.sh %s" % ( name )
-    os.system( command )
-    # write to data
-    line = "%s,%s\n" % ( text, svgName )
-    _log.write( line )
-_log.close()
-_file.close()
+# for i in range( num ):
+#     text = getChinese( _content, i )
+#     print "start to process %s" % ( text )
+#     # text = sys.argv[1]
+#     name = "%d.png" % ( i )
+#     svgName = "%d.svg" % (i)
+#     _list = getFontList( text )
+#     drawPicture( _list, name )
+#     resizePicture( name )
+#     print "start to change to svg"
+#     command = "./png2svg.sh %s" % ( name )
+#     print command
+#     os.system( command )
+#     # write to data
+#     line = "%s,%s\n" % ( text, svgName )
+#     _log.write( line )
+# _log.close()
+# _file.close()
 
 # Parse pe file
-# def changePeFile( fontName, fileName ) :
-#     print "changePeFile:%s %s" % ( fontName, fileName )
-#     peFile = open( "convert.pe", mode='r+' )
-#     firstLine=peFile.readline()
-#     nameLine = peFile.readline()
-#     fileLine = peFile.readline()
-#     last = peFile.read()
-#     peFile.close()
-#     nameLine = "fontName = \"%s\" \n" % ( fontName )
-#     fileLine = "svg_file = \"%s\" \n" % ( fileName )
-#     # print firstLine
-#     # print nameLine
-#     # print fileLine
-#     # print last
-#     final = firstLine + nameLine + fileLine + last
-#     peFile = open( "convert.pe", mode='w' )
-#     peFile.write(final)
-#     peFile.close()
-#     output = os.popen( "FontForge -script convert.pe test.sfd" )
+def changePeFile( fontName, fileName ) :
+    print "changePeFile:%s %s" % ( fontName, fileName )
+    peFile = open( "convert.pe", mode='r+' )
+    firstLine=peFile.readline()
+    nameLine = peFile.readline()
+    fileLine = peFile.readline()
+    last = peFile.read()
+    peFile.close()
+    nameLine = "fontName = \"%s\" \n" % ( fontName )
+    fileLine = "svg_file = \"%s\" \n" % ( fileName )
+    # print firstLine
+    # print nameLine
+    # print fileLine
+    # print last
+    final = firstLine + nameLine + fileLine + last
+    peFile = open( "convert.pe", mode='w' )
+    peFile.write(final)
+    peFile.close()
+    output = os.system( "FontForge -script convert.pe test.sfd" )
 
-# ## read config.txt
-# _config = open("config.txt", mode='r')
-# for line in _config.readlines():
-#     line = line.replace('\n',"")
-#     tbl = line.split(',')
-#     changePeFile( tbl[0], tbl[1] )
-#     time.sleep(1)
-#     print line
+## read config.txt
+_config = open("config.txt", mode='r')
+fromLine = 301
+toLine = 330
+lineNum = 1
+for line in _config.readlines():
+    if( lineNum >= fromLine and lineNum <= toLine ):
+        line = line.replace('\n',"")
+        tbl = line.split(',')
+        changePeFile( tbl[0], tbl[1] )
+        time.sleep(0.5)
+        print line
+    
+    lineNum = lineNum+1
+    
 
 
 
