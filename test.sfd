@@ -22,7 +22,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1558844203
-ModificationTime: 1564832254
+ModificationTime: 1564887751
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -46,7 +46,7 @@ NameList: AGL For New Fonts
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 0
-WinInfo: 21800 25 9
+WinInfo: 20178 38 14
 BeginPrivate: 0
 EndPrivate
 BeginChars: 65536 813
@@ -1840,7 +1840,7 @@ SplineSet
  375 -200 l 1
  312.5 -200 l 1
  250 -200 l 1
- 2550 -168.75 l 1
+ 250 -137.5 l 5
  250 -137.5 l 1
  312.5 -137.5 l 1
  375 -137.5 l 1
