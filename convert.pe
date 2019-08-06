@@ -1,6 +1,6 @@
 #! /Applications/FontForge.app/Contents/MacOS/FontForge
-fontName = "承" 
-svg_file = "329.svg" 
+fontName = "鼾" 
+svg_file = "6761.svg" 
 
 Open($1)
 Print("Start to load font")

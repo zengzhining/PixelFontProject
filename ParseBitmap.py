@@ -140,16 +140,16 @@ def changePeFile( fontName, fileName ) :
 
 ## read config.txt
 _config = open("config.txt", mode='r')
-fromLine = 781
-toLine = 810
+## 待运行
+fromLine = 6701
+toLine = 6762
 lineNum = 1
 for line in _config.readlines():
     if( lineNum >= fromLine and lineNum <= toLine ):
         line = line.replace('\n',"")
         tbl = line.split(',')
         changePeFile( tbl[0], tbl[1] )
-        time.sleep(0.5)
-        print line
+        time.sleep(6)
     
     lineNum = lineNum+1
     
